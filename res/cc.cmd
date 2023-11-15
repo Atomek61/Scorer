@@ -1,0 +1,13 @@
+call ccc.cmd 0 %1 %2 %3 %4
+call ccc.cmd 1 %1 %2 %3 %4
+call ccc.cmd 2 %1 %2 %3 %4
+call ccc.cmd 3 %1 %2 %3 %4
+call ccc.cmd 4 %1 %2 %3 %4
+call ccc.cmd 5 %1 %2 %3 %4
+call ccc.cmd 6 %1 %2 %3 %4
+call ccc.cmd 7 %1 %2 %3 %4
+call ccc.cmd 8 %1 %2 %3 %4
+call ccc.cmd 9 %1 %2 %3 %4
+call ccc.cmd dotson %1 %2 %3 %4
+call ccc.cmd dotsoff %1 %2 %3 %4
+call ccc.cmd space %1 %2 %3 %4

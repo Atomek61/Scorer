@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72" height="112" version="1.1" viewBox="0 0 19.05 29.633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="brightled">
+   <stop style="stop-color:#dddddd" offset="0"/>
+   <stop style="stop-color:#888888" offset="1"/>
+  </linearGradient>
+  <radialGradient id="radialGradient31218" cx="10.562" cy="2.1167" r="7.7951" gradientTransform="matrix(1 0 0 .27154 0 1.5419)" gradientUnits="userSpaceOnUse" xlink:href="#brightled"/>
+  <radialGradient id="radialGradient12031" cx="9.5255" cy="14.817" r="5.9764" gradientTransform="matrix(1 0 0 .35418 0 9.569)" gradientUnits="userSpaceOnUse" xlink:href="#brightled"/>
+  <radialGradient id="radialGradient12035" cx="8.4881" cy="27.517" r="7.7956" gradientTransform="matrix(1 0 0 .27152 0 20.045)" gradientUnits="userSpaceOnUse" xlink:href="#brightled"/>
+  <radialGradient id="radialGradient12043" cx="3.6286" cy="7.5568" r="2.3924" gradientTransform="matrix(1 0 0 2.8781 0 -14.193)" gradientUnits="userSpaceOnUse" xlink:href="#brightled"/>
+  <radialGradient id="radialGradient12045" cx="15.421" cy="22.076" r="2.3924" gradientTransform="matrix(1 0 0 2.8784 0 -41.468)" gradientUnits="userSpaceOnUse" xlink:href="#brightled"/>
+ </defs>
+ <path d="m4.9099 25.4-4.2174 3.9362c0.31604 0.2097 0.77987 0.29714 1.4242 0.29714h12.7c0.64454 0 1.1211-0.08726 1.4671-0.29714l-3.655-3.9362z" style="fill:url(#radialGradient12035)"/>
+ <path d="m3.1483 15.19-2.2679 2.1167-0.72927 10.21c-0.045994 0.64391 0.007624 1.1139 0.19342 1.4449l4.2179-3.9362 0.55131-7.7184z" style="fill:#333333"/>
+ <path d="m15.848 15.19-2.2679 2.1172-0.55135 7.7189 3.655 3.9362c0.23335-0.33102 0.35436-0.80109 0.40038-1.4454l0.72934-10.211z" style="fill:url(#radialGradient12045)"/>
+ <path d="m5.817 12.7-2.2679 2.1167 1.9655 2.1167h7.7189l2.2684-2.1167-1.9655-2.1167z" style="fill:url(#radialGradient12031)"/>
+ <path d="m2.3659 0.67128c-0.23335 0.33102-0.35436 0.80109-0.40038 1.4454l-0.72923 10.209 1.9655 2.1167 2.2679-2.1167 0.55131-7.7184z" style="fill:url(#radialGradient12043)"/>
+ <path d="m18.705 0.67076-4.2174 3.9362-0.55135 7.7189 1.966 2.1172 2.2673-2.1162 0.7293-10.21c0.04604-0.64454-0.0076-1.1149-0.19386-1.4459z" style="fill:#333333"/>
+ <path d="m4.2333 0c-0.64391 0-1.1201 0.087187-1.4661 0.29662l3.655 3.9367h7.7174l4.2179-3.9362c-0.31604-0.20971-0.77987-0.29714-1.4242-0.29714z" style="fill:url(#radialGradient31218)"/>
+</svg>

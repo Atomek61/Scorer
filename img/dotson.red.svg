@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36" height="112" version="1.1" viewBox="0 0 9.525 29.633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="brightled">
+   <stop style="stop-color:#ff8800" offset="0"/>
+   <stop style="stop-color:#ff0000" offset="1"/>
+  </linearGradient>
+  <radialGradient id="radialGradient40159" cx="8.4667" cy="11.642" r="2.1167" gradientTransform="matrix(1 0 0 1.0025 -2.6356 -5.9637e-7)" gradientUnits="userSpaceOnUse" xlink:href="#brightled"/>
+  <radialGradient id="radialGradient40161" cx="8.4667" cy="17.992" r="2.1167" gradientTransform="matrix(1 0 0 1.0025 -2.6356 -5.9637e-7)" gradientUnits="userSpaceOnUse" xlink:href="#brightled"/>
+ </defs>
+ <rect transform="matrix(1 0 -.071194 .99746 0 0)" x="3.7144" y="9.5491" width="4.2333" height="4.2441" ry="1.1578e-8" style="fill:url(#radialGradient40159);stroke-linecap:round;stroke-linejoin:round;stroke-width:.52984"/>
+ <rect transform="matrix(1 0 -.071194 .99746 0 0)" x="3.7144" y="15.915" width="4.2333" height="4.2441" ry="1.1578e-8" style="fill:url(#radialGradient40161);stroke-linecap:round;stroke-linejoin:round;stroke-width:.52984"/>
+</svg>

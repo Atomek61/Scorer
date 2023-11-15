@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="36"
+   height="112"
+   viewBox="0 0 9.5249995 29.633333"
+   version="1.1"
+   id="svg281"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="dots off.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview283"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="7.319248"
+     inkscape:cx="25.207508"
+     inkscape:cy="60.866909"
+     inkscape:window-width="1346"
+     inkscape:window-height="1230"
+     inkscape:window-x="156"
+     inkscape:window-y="156"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid402"
+       empspacing="4"
+       originx="0"
+       originy="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs278" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g332"
+       transform="translate(0.37797602)"
+       style="fill:#2e0000;fill-opacity:1">
+      <rect
+         style="fill:#2e0000;fill-opacity:1;stroke:none;stroke-width:0.529575;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         id="rect11600"
+         width="4.2333331"
+         height="4.2441187"
+         x="3.2505953"
+         y="9.5492668"
+         ry="8.8494359e-09"
+         transform="matrix(1,0,-0.07124705,0.9974587,0,0)" />
+      <rect
+         style="fill:#2e0000;fill-opacity:1;stroke:none;stroke-width:0.529575;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         id="rect11602"
+         width="4.2333331"
+         height="4.2441187"
+         x="3.2505953"
+         y="15.915446"
+         ry="8.8494359e-09"
+         transform="matrix(1,0,-0.07124705,0.9974587,0,0)" />
+    </g>
+  </g>
+</svg>

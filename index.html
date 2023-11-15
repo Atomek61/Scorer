@@ -1,0 +1,317 @@
+﻿<!DOCTYPE HTML>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Atomeks Volleyball Score</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>   
+    <style>
+      body {
+        margin: 0;
+        background-color: black;
+        font: 12pt Arial
+      }  
+
+      #display {
+        position: absolute; top: 50%; width:100%; transform: translateY(-50%);
+        aspect-ratio: 9/4;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 3fr 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+      }
+
+      #toppanel {
+        display: grid;
+        grid-template-columns: repeat(2, 2fr) 1fr repeat(2, 2fr);
+        grid-template-rows: 3fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+      }
+
+      #toppanel>img {width: 100%}
+      
+      #bottompanel {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+
+      #bottompanel>div {
+        margin: 2%; padding: 0 0.5em; border-radius: 0.4em;
+        font-size: 3em;
+        color: gray; background-color: rgb(38, 28, 28);
+        display: flex;
+        align-items: center;
+      }
+
+      .button>img {
+        height: 1.5em;
+      }
+
+      #bottompanel>div:hover {
+        transition: 0.6s ease;
+        background-color:rgb(58, 58, 58);
+      }
+
+      #bottompanel>div:active {
+        transition: 0.2s ease;
+        background-color:white;
+      }
+
+
+    </style>
+
+    <script>
+
+      class Score {
+
+        constructor() {
+          this.A = new Team(this, "A");
+          this.B = new Team(this, "B");
+          this._color = "red";
+          this.onChanged = null;
+          this._lastPoints = [0, 0];
+          this._swapped = false;
+          this._swapping = false;
+        }
+
+        doChanged(source) {
+          if (this.onChanged)
+            this.onChanged(source);
+        }
+
+        get color() {
+          return this._color;
+        }
+
+        set color(value) {
+          if (value!=this.color) {
+            this._color = value;
+            this.doChanged(this);
+          }  
+        }
+
+        reset() {
+          let lastPoints = [this.A.points, this.B.points];
+          this.A.points = 0;
+          this.B.points = 0;
+          this._lastPoints = lastPoints;
+        }
+
+        nextColor() {
+          if (this.color=="red")
+            this.color = "green";
+          else if (this.color=="green")
+            this.color = "yellow";
+          else if (this.color=="yellow")
+            this.color = "blue";
+          else
+            this.color = "red";
+        }
+
+        revert() {
+          let lastPoints = this._lastPoints;
+          let points = [this.A.points, this.B.points];
+          [this.A.points, this.B.points] = lastPoints;
+          this._lastPoints = points;
+        }
+
+        get swapped() {
+          return this._swapped;
+        }
+        
+        set swapped(value) {          
+          if (!this._swapping && this.swapped != value) {
+            let [A, B] = this._lastPoints;  
+            [this.A.points, this.B.points] = [this.B.points, this.A.points];
+            this._lastPoints = [B, A];
+            this._swapped = value;
+          }
+        }
+
+        swap(interval) {
+          if (!this._swapping) {
+            this.swapped = true;
+            this._swapping = true;
+            setTimeout(()=>{
+              this._swapping = false;
+              this.swapped = false;
+            }, 3000);
+          }
+        }
+
+      }
+
+      class Team {
+        
+        constructor(score, name) {
+          this._score = score;
+          this._name = name;
+          this._points = 0
+        };
+
+        get score() {
+          return this._score;
+        }
+
+        set points(value) {
+          if (value>99) value = 99;
+          else if (value<0) value = 0;
+          if (this.points!=value) {
+            this.score._lastPoints = [this.score.A.points, this.score.B.points];
+            this._points = value;
+            this.score.doChanged(this);
+          }
+        }
+
+        get points() {
+          return this._points;
+        }
+
+        set name(value) {
+          if (this.name!=value) {
+            this._name = value;
+            this.score.doChanged(this);
+          }
+        }
+
+        get name() {
+          return this._name;
+        }
+
+        inc(n = 1) {
+          this.points = this.points + n
+        }
+
+        dec(n = 1) {
+          if (n>this.points) n = this.points;
+          this.points = this.points - n
+        }
+
+      }
+
+      // Encapsulates the Score with its 2 Teams and handles some GUI
+      class TeamScorer {
+
+        constructor(container) {
+          this.score = new Score();
+          this.container = container;         
+          this.score.onChanged = (source) => {
+            if (source == this.score)
+              this.updateDisplay(source);
+            else 
+              this.updateTeam(source)
+          }
+
+          document.getElementById("A1").onclick = (event)=>{
+            if (event.offsetY<event.target.height / 2)
+              this.score.A.inc(10);
+            else
+              this.score.A.dec(10);
+          }
+
+          document.getElementById("A2").onclick = (event)=>{
+            if (event.offsetY<event.target.height / 2)
+              this.score.A.inc();
+            else
+              this.score.A.dec();
+          }
+
+          document.getElementById("B1").onclick = (event)=>{
+            if (event.offsetY<event.target.height / 2)
+              this.score.B.inc(10);
+            else
+              this.score.B.dec(10);
+          }
+
+          document.getElementById("B2").onclick = (event)=>{
+            if (event.offsetY<event.target.height / 2)
+              this.score.B.inc();
+            else
+              this.score.B.dec();
+          }
+
+          document.getElementById("revert").onclick =(event) => {
+            teamScorer.score.revert();
+          }
+          document.getElementById("reset").onclick = (event) => {
+            teamScorer.score.reset();
+          }
+          document.getElementById("nextcolor").onclick = (event) => {
+            teamScorer.score.nextColor();
+          }
+          document.getElementById("swap").onclick = (event) => {
+            teamScorer.score.swap(3000);
+          }
+          document.getElementById("fullscreen").onclick = (event) => {
+            teamScorer.fullscreen = !teamScorer.fullscreen;
+          }
+
+          this.container.addEventListener('fullscreenchange', (event) => {
+            if (document.fullscreenElement != null)
+              document.querySelector("#fullscreen>img").src = "img/full2.svg";
+            else
+              document.querySelector("#fullscreen>img").src = "img/full1.svg";
+          });
+
+
+          this.updateDisplay();
+        }
+
+        get fullscreen() {
+          return document.fullscreenElement != null;
+        }
+
+        set fullscreen(value) {
+          if (value!=this.fullscreen) {
+            if (value)
+              this.container.requestFullscreen();
+            else
+              document.exitFullscreen();
+          }
+        }
+
+        updateTeam(team) {
+          let img1 = document.getElementById(team.name+"1")
+          let img2 = document.getElementById(team.name+"2")
+          let points = team.points % 100
+          let d1 = Math.floor(points / 10)
+          if (d1==0) d1 = "space"
+          let d2 = points % 10
+          img1.src = "img/"+d1+"."+this.score.color+".svg"       
+          img2.src = "img/"+d2+"."+this.score.color+".svg"
+        }
+        
+        updateDisplay() {
+          this.updateTeam(this.score.A);    
+          document.getElementById("Dots").src = "img/dotson."+this.score.color+".svg";
+          this.updateTeam(this.score.B);    
+        }
+      }
+
+      window.onload = ()=>{
+        teamScorer  = new TeamScorer(document.getElementById("display"))
+      }
+
+    </script>
+  </head>
+  <body>
+    <div id="display">
+      <div id="toppanel">
+        <img id="A1" src="img/space.red.svg"/>
+        <img id="A2" src="img/0.red.svg"/>
+        <img id="Dots" src="img/dotson.red.svg"/>
+        <img id="B1" src="img/space.red.svg"/>
+        <img id="B2" src="img/0.red.svg"/>
+      </div>
+      <div id="bottompanel">
+        <div class="button" id="revert"><img src="img/revert.svg"/></div>
+        <div class="button" id="reset"><img src="img/reset.svg"/></div>
+        <div class="button" id="nextcolor"><img src="img/colors.svg"/></div>
+        <div class="button" id="swap"><img src="img/swap.svg"/></div>
+        <div class="button" id="fullscreen"><img src="img/full1.svg"/></div>
+      </div>
+    </div>
+  </body>
+</html>
+  
