@@ -2,8 +2,8 @@
 <svg width="72" height="112" version="1.1" viewBox="0 0 19.05 29.633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <defs>
   <linearGradient id="brightled">
-   <stop style="stop-color:#fff589" offset="0"/>
-   <stop style="stop-color:#ffbb00" offset="1"/>
+   <stop style="stop-color:#ffef65" offset="0"/>
+   <stop style="stop-color:#ffe927" offset="1"/>
   </linearGradient>
   <radialGradient id="radialGradient8584" cx="16.425" cy="7.5569" r="2.4891" gradientTransform="matrix(1,0,0,2.7666,0,-13.35)" gradientUnits="userSpaceOnUse" xlink:href="#brightled"/>
   <radialGradient id="radialGradient27977" cx="10.562" cy="2.1167" r="7.7951" gradientTransform="matrix(1 0 0 .27154 0 1.5419)" gradientUnits="userSpaceOnUse" xlink:href="#brightled"/>

@@ -1,68 +1,61 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="de">
   <head>
     <meta charset="UTF-8"/>
     <title>Atomeks Volleyball Score</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>   
     <style>
-      body {
-        margin: 0;
-        background-color: black;
-        font: 12pt Arial
-      }  
+        body {margin: 0; padding: 0; background-color: black;}
 
-      #display {
-        position: absolute; top: 50%; width:100%; transform: translateY(-50%);
-        aspect-ratio: 9/4;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 3fr 1fr;
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-      }
+        #Scorer {
+          position: absolute; top: 50%; width:100%; transform: translateY(-50%);
+          aspect-ratio: 324/168;
+          display: grid;
+          grid-template-columns: 2fr 2fr 1fr 2fr 2fr; 
+          grid-template-rows: 3fr 1fr; 
+        }
 
-      #toppanel {
-        display: grid;
-        grid-template-columns: repeat(2, 2fr) 1fr repeat(2, 2fr);
-        grid-template-rows: 3fr;
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-      }
+        #Controls {
+          grid-column-start: 1; 
+          grid-column-end: 6;
+          display: flex;
+          flex-wrap: none;
+          justify-content: space-around;
+          align-items: center;
+        }
 
-      #toppanel>img {width: 100%}
-      
-      #bottompanel {
-        display: flex;
-        flex-wrap: nowrap;
-      }
+        .modul7>img, .modulDot>img {
+          width: 100%; height: 100%;
+        }
 
-      #bottompanel>div {
-        margin: 2%; padding: 0 0.5em; border-radius: 0.4em;
-        font-size: 3em;
-        color: gray; background-color: rgb(38, 28, 28);
-        display: flex;
-        align-items: center;
-      }
+        .button {
+          height: 80%; aspect-ratio: 1/1; background-color: rgb(38, 28, 28);
+          background-size: cover;
+          border-radius: 0.4em;
+        }
 
-      .button>img {
-        height: 1.5em;
-      }
+        .button:hover {
+          transition: 0.6s ease;
+          background-color:rgb(58, 58, 58);
+        }
 
-      #bottompanel>div:hover {
-        transition: 0.6s ease;
-        background-color:rgb(58, 58, 58);
-      }
+        .button:active {
+          transition: 0.2s ease;
+          background-color:rgb(78, 78, 78);
+        }
 
-      #bottompanel>div:active {
-        transition: 0.2s ease;
-        background-color:white;
-      }
+        #revert {background-image: url("img/revert.svg");}
+        #reset {background-image: url("img/reset.svg");}
+        #color {background-image: url("img/color.svg");}
+        #swap {background-image: url("img/swap.svg");}
+        #full {background-image: url("img/full1.svg");}
 
-
+        #appnote {
+          position: absolute; right: 8px; bottom: 4px;
+          color: hsla(20, 40%, 80%, 20%);
+        }
     </style>
-
     <script>
-
       class Score {
 
         constructor() {
@@ -119,7 +112,7 @@
         get swapped() {
           return this._swapped;
         }
-        
+
         set swapped(value) {          
           if (!this._swapping && this.swapped != value) {
             let [A, B] = this._lastPoints;  
@@ -143,7 +136,7 @@
       }
 
       class Team {
-        
+
         constructor(score, name) {
           this._score = score;
           this._name = name;
@@ -187,8 +180,7 @@
           if (n>this.points) n = this.points;
           this.points = this.points - n
         }
-
-      }
+      }  
 
       // Encapsulates the Score with its 2 Teams and handles some GUI
       class TeamScorer {
@@ -202,7 +194,7 @@
             else 
               this.updateTeam(source)
           }
-
+          
           document.getElementById("A1").onclick = (event)=>{
             if (event.offsetY<event.target.height / 2)
               this.score.A.inc(10);
@@ -237,23 +229,22 @@
           document.getElementById("reset").onclick = (event) => {
             teamScorer.score.reset();
           }
-          document.getElementById("nextcolor").onclick = (event) => {
+          document.getElementById("color").onclick = (event) => {
             teamScorer.score.nextColor();
           }
           document.getElementById("swap").onclick = (event) => {
             teamScorer.score.swap(3000);
           }
-          document.getElementById("fullscreen").onclick = (event) => {
+          document.getElementById("full").onclick = (event) => {
             teamScorer.fullscreen = !teamScorer.fullscreen;
           }
 
           this.container.addEventListener('fullscreenchange', (event) => {
             if (document.fullscreenElement != null)
-              document.querySelector("#fullscreen>img").src = "img/full2.svg";
+              document.getElementById("full").style.backgroundImage= "url(img/full2.svg)";
             else
-              document.querySelector("#fullscreen>img").src = "img/full1.svg";
+              document.getElementById("full").style.backgroundImage= "url(img/full1.svg)";
           });
-
 
           this.updateDisplay();
         }
@@ -281,7 +272,7 @@
           img1.src = "img/"+d1+"."+this.score.color+".svg"       
           img2.src = "img/"+d2+"."+this.score.color+".svg"
         }
-        
+
         updateDisplay() {
           this.updateTeam(this.score.A);    
           document.getElementById("Dots").src = "img/dotson."+this.score.color+".svg";
@@ -290,28 +281,26 @@
       }
 
       window.onload = ()=>{
-        teamScorer  = new TeamScorer(document.getElementById("display"))
+        teamScorer  = new TeamScorer(document.getElementById("Scorer"))
       }
-
     </script>
   </head>
   <body>
-    <div id="display">
-      <div id="toppanel">
-        <img id="A1" src="img/space.red.svg"/>
-        <img id="A2" src="img/0.red.svg"/>
-        <img id="Dots" src="img/dotson.red.svg"/>
-        <img id="B1" src="img/space.red.svg"/>
-        <img id="B2" src="img/0.red.svg"/>
-      </div>
-      <div id="bottompanel">
-        <div class="button" id="revert"><img src="img/revert.svg"/></div>
-        <div class="button" id="reset"><img src="img/reset.svg"/></div>
-        <div class="button" id="nextcolor"><img src="img/colors.svg"/></div>
-        <div class="button" id="swap"><img src="img/swap.svg"/></div>
-        <div class="button" id="fullscreen"><img src="img/full1.svg"/></div>
+    <div id="Scorer">
+      <div class="modul7"><img id="A1" src="img/space.red.svg"/></div>
+      <div class="modul7"><img id="A2" src="img/0.red.svg"/></div>
+      <div class="modulDot"><img id="Dots" src="img/dotson.red.svg"/></div>
+      <div class="modul7"><img id="B1" src="img/space.red.svg"/></div>
+      <div class="modul7"><img id="B2" src="img/0.red.svg"/></div>
+      <div id="Controls">
+        <div class="button" id="revert"></div>
+        <div class="button" id="reset"></div>
+        <div class="button" id="color"></div>
+        <div class="button" id="swap"></div>
+        <div class="button" id="full"></div>
       </div>
     </div>
+    <span id="appnote">© 2023 Jan-Erich Schirrmacher, www.atomek.de</span>
   </body>
 </html>
   

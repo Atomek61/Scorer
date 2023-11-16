@@ -2,7 +2,7 @@
 <svg width="72" height="112" version="1.1" viewBox="0 0 19.05 29.633" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <defs>
   <linearGradient id="brightled">
-   <stop style="stop-color:#ff8800" offset="0"/>
+   <stop style="stop-color:#ff4400" offset="0"/>
    <stop style="stop-color:#ff0000" offset="1"/>
   </linearGradient>
   <radialGradient id="radialGradient28775" cx="15.421" cy="22.076" r="2.3924" gradientTransform="matrix(1 0 0 2.8784 0 -41.468)" gradientUnits="userSpaceOnUse" xlink:href="#brightled"/>
