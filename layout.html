@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Layout Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>   
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        #container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            background-color: gray;
+        }
+
+        @media  (min-aspect-ratio: 1/1) {
+            #container {aspect-ratio: 9/4;}
+            @media  (min-aspect-ratio: 9/4) {
+                #container {height: 100%;}
+            }
+            @media  (max-aspect-ratio: 9/4) {
+                #container {width: 100%;}
+            }
+        }    
+        @media  (max-aspect-ratio: 1/1) {
+            #container {aspect-ratio: 5/7;}
+            @media  (min-aspect-ratio: 5/7) {
+                #container {height: 100%;}
+            }
+            @media  (max-aspect-ratio: 5/7) {
+                #container {width: 100%;}
+            }
+        }    
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+</body>
+
+</html>
