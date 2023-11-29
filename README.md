@@ -1,3 +1,7 @@
+# Deprecated
+This little project is replaced by Atomek61/vbscore.
+This project uses svg images for each cipher and color. This may lead to small delays while loading them over the web. The new project has svg templates inside for its shapes and is more ressource saving.
+
 # Scorer
 Simple Volleyball-Scorer for the Tablet
 
